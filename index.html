@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesehatan Prima - Rumah Sakit Modern</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #39ff14, #32cd32);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d5a2d;
+        }
+
+        .logo::before {
+            content: ""; /* Remove emoji, use background image if desired */
+            display: inline-block;
+            width: 32px; /* Adjust size as needed */
+            height: 32px;
+            background-image: url('https://rsjiwatampan.riau.go.id/landing/images/Logo.png'); /* Placeholder for hospital icon */
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #39ff14;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: linear-gradient(135deg, rgba(57, 255, 20, 0.8), rgba(50, 205, 50, 0.8)), url('https://via.placeholder.com/1920x1080/39ff14/ffffff?text=Rumah+Sakit+Modern') no-repeat center center/cover; /* Placeholder for hospital image */
+            animation: gradientShift 5s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background: linear-gradient(135deg, rgba(57, 255, 20, 0.8), rgba(50, 205, 50, 0.8)), url('https://via.placeholder.com/1920x1080/39ff14/ffffff?text=Rumah+Sakit+Modern') no-repeat center center/cover; }
+            50% { background: linear-gradient(135deg, rgba(50, 205, 50, 0.8), rgba(57, 255, 20, 0.8)), url('https://via.placeholder.com/1920x1080/32cd32/ffffff?text=Kesehatan+Prima') no-repeat center center/cover; }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2d5a2d;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2d5a2d;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2d5a2d;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            text-align: center;
+            /* font-size: 8rem; */ /* Removed emoji font size */
+            color: #39ff14;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            background: linear-gradient(135deg, #f0fff0, #e6ffe6);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid #39ff14;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2d5a2d;
+        }
+
+        .feature .icon {
+            font-size: 3rem; /* For icon fonts or larger emojis */
+            margin-bottom: 1rem;
+            color: #39ff14;
+        }
+
+        /* Services Section */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f0fff0, #e6ffe6);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #39ff14;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(57, 255, 20, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d5a2d;
+        }
+
+        /* Doctors Section */
+        .doctors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .doctor-card {
+            background: linear-gradient(135deg, #f0fff0, #e6ffe6);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #39ff14;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(57, 255, 20, 0.3);
+        }
+
+        .doctor-image img {
+            width: 120px; /* Adjust size as needed */
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #39ff14;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .doctor-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2d5a2d;
+        }
+
+        .doctor-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        /* Removed .doctor-card button styling as the button is removed */
+
+        /* Appointment Form */
+        .appointment-form {
+            background: linear-gradient(135deg, #f0fff0, #e6ffe6);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 2px solid #39ff14;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2d5a2d;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #39ff14;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #32cd32;
+        }
+
+        .submit-btn {
+            background: #39ff14;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #32cd32;
+            transform: translateY(-2px);
+        }
+
+        /* Success Message */
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1.5rem;
+            font-weight: bold;
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, #f0fff0, #e6ffe6);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #39ff14;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial .stars {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: gold; /* Make stars gold */
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial cite {
+            font-weight: bold;
+            color: #2d5a2d;
+        }
+
+        /* News Section */
+        .news {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: linear-gradient(135deg, #f0fff0, #e6ffe6);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #39ff14;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(57, 255, 20, 0.3);
+        }
+
+        .news-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #39ff14; /* Icon color */
+        }
+
+        .news-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2d5a2d;
+        }
+
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-card p {
+            margin-bottom: 1rem;
+        }
+
+        /* Removed .read-more styling as the link is removed */
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #f0fff0, #e6ffe6);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #39ff14;
+        }
+
+        .contact-info h3 {
+            color: #2d5a2d;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info strong {
+            color: #2d5a2d;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-radius: 20px 20px 0 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">PT Kesehatan Prima</div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#doctors">Dokter</a></li>
+                <li><a href="#appointment">Janji Temu</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Kesehatan Anda Kebahagiaan Kami</h1>
+            <p>Revolusi layanan kesehatan modern dengan teknologi canggih dan sentuhan manusiawi yang hangat</p>
+            <a href="#appointment" class="cta-button">Buat Janji Sekarang</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Kesehatan Prima</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Inovasi Kesehatan Masa Depan</h3>
+                    <p>Kesehatan Prima adalah pelopor layanan kesehatan digital yang menghadirkan pengalaman medis terdepan. Kami menggabungkan keahlian medis terbaik dengan teknologi AI dan sistem terintegrasi untuk memberikan perawatan yang personal dan efektif.</p>
+                    <p>Dengan dukungan infrastruktur teknologi terkini, kami menciptakan ekosistem kesehatan yang seamless, aman, dan mudah diakses oleh seluruh keluarga Indonesia.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://cdn-healthcare.hellohealthgroup.com/hospitals/id/rs-prima-husada-pasuruan-120220211.png" alt="Gedung Rumah Sakit Modern">
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="icon">🧬</div>
+                    <h4>Tim Medis Super Kompeten</h4>
+                    <p>Dokter spesialis terpilih dengan pengalaman internasional</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">🔬</div>
+                    <h4>Teknologi Futuristik</h4>
+                    <p>Peralatan medis berstandar internasional dengan AI diagnostic</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">🔐</div>
+                    <h4>Keamanan Data Maksimal</h4>
+                    <p>Sistem keamanan berlapis untuk melindungi privasi pasien</p>
+                </div>
+                <div class="feature">
+                    <div class="icon">❤️</div>
+                    <h4>Pelayanan Premium</h4>
+                    <p>Pengalaman pasien yang tak terlupakan dengan standar hotel bintang 5</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Layanan Revolusioner Kami</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">🩺</div>
+                    <h3>Health Check VIP</h3>
+                    <p>Pemeriksaan kesehatan komprehensif dengan teknologi scanning 3D dan analisis genetik untuk deteksi dini penyakit.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Poli Spesialis Eksklusif</h3>
+                    <p>Konsultasi dengan dokter super spesialis terbaik Indonesia dalam suasana premium dan nyaman.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚨</div>
+                    <h3>Emergency Response 24/7</h3>
+                    <p>Tim medis siaga dengan ambulans canggih dan sistem komunikasi real-time untuk penanganan darurat.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Lab & Radiologi Canggih</h3>
+                    <p>Pemeriksaan laboratorium dengan hasil instan dan radiologi beresolusi tinggi untuk diagnosis akurat.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤱</div>
+                    <h3>Maternal Care Premium</h3>
+                    <p>Paket kehamilan dan persalinan dengan monitoring 24 jam dan ruang bersalin mewah.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">😁</div>
+                    <h3>Smile Makeover Studio</h3>
+                    <p>Perawatan gigi estetik dengan teknologi laser dan desain senyum digital untuk hasil sempurna.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section id="doctors">
+        <div class="container">
+            <h2 class="section-title">Tim Dokter Superstar</h2>
+            <div class="doctors">
+                <div class="doctor-card">
+                    <div class="doctor-image">
+                        <img src="https://img.okezone.com/content/2020/03/30/612/2191422/dokter-ganteng-ini-minta-masyarakat-ikut-hentikan-proses-penyebaran-covid-19-YF02IqyVf7.jpg" alt="Dr. Rizki Pratama">
+                    </div>
+                    <h3>Dr. Rizki Pratama, Sp.JP</h3>
+                    <p>Ahli Jantung & Pembuluh Darah</p>
+                    <!-- Tombol "Lihat Profil Lengkap" dihapus -->
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-image">
+                        <img src="https://img.okezone.com/content/2022/11/20/194/2711131/6-potret-dokter-cantik-samira-senyum-manisnya-bikin-meleleh-FuE9CqKBAZ.jpg" alt="Dr. Sari Indah">
+                    </div>
+                    <h3>Dr. Sari Indah, Sp.A</h3>
+                    <p>Spesialis Anak & Tumbuh Kembang</p>
+                    <!-- Tombol "Lihat Profil Lengkap" dihapus -->
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-image">
+                        <img src="https://img.lovepik.com/free-png/20220125/lovepik-male-doctor-image-png-image_401729486_wh1200.png" alt="Dr. Budi Santoso">
+                    </div>
+                    <h3>Dr. Budi Santoso, Sp.S</h3>
+                    <p>Neurolog & Spesialis Saraf</p>
+                    <!-- Tombol "Lihat Profil Lengkap" dihapus -->
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-image">
+                        <img src="https://asset-a.grid.id/crop/0x0:0x0/700x0/photo/2019/08/07/2058946134.jpg" alt="Dr. Maya Putri">
+                    </div>
+                    <h3>Dr. Maya Putri, Sp.OG</h3>
+                    <p>Spesialis Kandungan & Kebidanan</p>
+                    <!-- Tombol "Lihat Profil Lengkap" dihapus -->
+                </div>
+                <div class="doctor-card">
+                    <div class="doctor-image">
+                        <img src="https://media.istockphoto.com/id/1613755727/id/foto/potret-dokter-umum-pria-berjas-putih-berdiri-di-dekat-jendela-dan-memalingkan-muka.jpg?s=170667a&w=0&k=20&c=qFEkJ2TK1wpzvD8iY_a_n1ZUoruUPfmiIgNoa6TJNEg=" alt="Dr. Arief Rahman">
+                    </div>
+                    <h3>Dr. Arief Rahman, Sp.KK</h3>
+                    <p>Dermatolog & Ahli Kecantikan</p>
+                    <!-- Tombol "Lihat Profil Lengkap" dihapus -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Form -->
+    <section id="appointment">
+        <div class="container">
+            <h2 class="section-title">Booking Janji Temu VIP</h2>
+            <form class="appointment-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Nomor WhatsApp</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Layanan yang Diinginkan</label>
+                    <select id="service" name="service" required>
+                        <option value="">Pilih Layanan</option>
+                        <option value="checkup">Health Check VIP</option>
+                        <option value="specialist">Konsultasi Spesialis</option>
+                        <option value="emergency">Layanan Darurat</option>
+                        <option value="lab">Pemeriksaan Lab</option>
+                        <option value="maternal">Maternal Care</option>
+                        <option value="dental">Smile Makeover</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Tanggal Kunjungan</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan Khusus</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Ceritakan keluhan atau kebutuhan khusus Anda..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Konfirmasi Janji Temu</button>
+                <div id="successMessage" class="success-message">
+                    Janji Temu Berhasil Dikonfirmasi! Kami akan segera menghubungi Anda.
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimoni Pasien Bahagia</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Pengalaman luar biasa! Pelayanan seperti di hotel mewah, dokternya ramah dan profesional. Sistem booking online-nya juga super praktis!"</p>
+                    <cite>- Ibu Sinta, Jakarta</cite>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"UGD 24 jam mereka benar-benar menyelamatkan hidup saya! Respons cepat, penanganan sigap, dan fasilitas yang sangat baik. Terima kasih Kesehatan Prima!"</p>
+                    <cite>- Pak Joko, Bekasi</cite>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Sistem IT terintegrasi membuat semua riwayat medis saya tersimpan dengan aman. Dokter bisa langsung akses data saya, jadi pemeriksaan lebih efisien dan akurat!"</p>
+                    <cite>- Mbak Dewi, Tangerang</cite>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Lingkungan rumah sakit yang bersih, modern, dan nyaman! Anak saya yang biasanya takut ke dokter jadi senang karena suasananya seperti playground!"</p>
+                    <cite>- Keluarga Budi, Depok</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news">
+        <div class="container">
+            <h2 class="section-title">Berita Kesehatan Terkini</h2>
+            <div class="news">
+                <div class="news-card">
+                    <div class="news-icon">💉</div>
+                    <h3>Revolusi Vaksinasi Digital untuk Dewasa</h3>
+                    <div class="news-date">28 Juni 2025</div>
+                    <p>Teknologi AI terbaru membantu menentukan jadwal vaksinasi yang tepat berdasarkan profil kesehatan individu.</p>
+                    <!-- Tautan "Baca Selengkapnya" dihapus -->
+                </div>
+                <div class="news-card">
+                    <div class="news-icon">🏃‍♂️</div>
+                    <h3>Olahraga Smart untuk Jantung Sehat</h3>
+                    <div class="news-date">22 Juni 2025</div>
+                    <p>Program olahraga terukur dengan monitoring real-time untuk kesehatan jantung optimal di era digital.</p>
+                    <!-- Tautan "Baca Selengkapnya" dihapus -->
+                </div>
+                <div class="news-card">
+                    <div class="news-icon">🧠</div>
+                    <h3>Mental Wellness di Era Super Digital</h3>
+                    <div class="news-date">15 Juni 2025</div>
+                    <p>Strategi jitu menjaga keseimbangan mental dengan teknologi mindfulness dan AI therapy assistant.</p>
+                    <!-- Tautan "Baca Selengkapnya" dihapus -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami Sekarang</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <p><strong>Alamat:</strong> Jl. Kesehatan Prima No. 888, Green Medical District, Jakarta Selatan, 12950</p>
+                    <p><strong>Telepon:</strong> (021) 8888-9999</p>
+                    <p><strong>WhatsApp:</strong> +62 812-3456-7890</p>
+                    <p><strong>Email:</strong> info@kesehatanprima.id</p>
+                    
+                    <h3>Jam Operasional</h3>
+                    <p><strong>Senin - Jumat:</strong> 06:00 - 22:00</p>
+                    <p><strong>Sabtu:</strong> 06:00 - 18:00</p>
+                    <p><strong>Minggu:</strong> 08:00 - 16:00</p>
+                    <p><strong>UGD:</strong> 24 Jam Non-Stop</p>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>Layanan Digital</h3>
+                    <p><strong>Telemedicine:</strong> Konsultasi online 24/7</p>
+                    <p><strong>Mobile App:</strong> Download "Kesehatan Prima" di App Store & Play Store</p>
+                    <p><strong>Virtual Queue:</strong> Antrean online untuk efisiensi waktu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kesehatan Prima. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Mencegah form dari submit default
+
+            // Tampilkan pesan sukses
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+
+            // Opsional: Reset form setelah beberapa detik
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+                event.target.reset(); // Mengosongkan form
+            }, 5000); // Pesan akan hilang setelah 5 detik
+        }
+    </script>
+</body>
+</html>
